@@ -1,3 +1,6 @@
+const toulouseMap = new CreateMap("mapid", 43.6043, 1.4437, 13, "pk.eyJ1Ijoid2xhZDM0IiwiYSI6ImNqeHA5N25qYTBhZnozbmwzMmdmczBtcGoifQ.hYSWIqrFTCmtKzfE56Y4iw");
+toulouseMap.displayMap();
+
 class FetchDataWithButton {
   constructor(inputValue, searchButton, app_id) {
     this.inputValue = document.querySelector(`${inputValue}`);
@@ -15,12 +18,14 @@ class FetchDataWithButton {
       const showData = () => {
         fetchCityName(this.inputValue.value).then(res => {
           console.log(res);
+          console.log(res.data[0].name);
           console.log(this.wech);
         });
       };
 
       this.searchButton.addEventListener("click", () => {
         showData();
+        console.log(toulouseMap.mapId);
       });
     };
   }
