@@ -1,8 +1,7 @@
-let countdown;
-const timerDisplay = document.querySelector(".display-timer");
-const endTimeDisplay = document.querySelector(".display-end_time");
-
-function timer(seconds) {
+function Timer(seconds) {
+    let countdown;
+    const timerDisplay = document.querySelector(".display-timer");
+    const endTimeDisplay = document.querySelector(".display-end_time");
     const now = Date.now();
     const then = now + seconds * 1000;
     displayTimeLeft(seconds);
@@ -19,18 +18,19 @@ function timer(seconds) {
         // Display it
         displayTimeLeft(secondsLeft);
     }, 1000);
+
+    function displayTimeLeft(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const remainderSeconds = seconds % 60;
+        const display = `${minutes}:${remainderSeconds < 10 ? "0" : ""}${remainderSeconds}`;
+        timerDisplay.textContent = display;
+    }
+
+    function displayEndTime(timestamp) {
+        const end = new Date(timestamp);
+        const hour = end.getHours();
+        const minutes = end.getMinutes();
+        endTimeDisplay.textContent = `Expire à ${hour < 10 ? "0" : ""}${hour}:${minutes < 10 ? "0" : ""}${minutes}`;
+    }
 }
 
-function displayTimeLeft(seconds) {
-    const minutes = Math.floor(seconds / 60);
-    const remainderSeconds = seconds % 60;
-    const display = `${minutes}:${remainderSeconds < 10 ? "0" : ""}${remainderSeconds}`;
-    timerDisplay.textContent = display;
-}
-
-function displayEndTime(timestamp) {
-    const end = new Date(timestamp);
-    const hour = end.getHours();
-    const minutes = end.getMinutes();
-    endTimeDisplay.textContent = `Expire à ${hour < 10 ? "0" : ""}${hour}:${minutes < 10 ? "0" : ""}${minutes}`;
-}
