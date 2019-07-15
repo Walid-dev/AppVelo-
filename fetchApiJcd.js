@@ -18,12 +18,11 @@ class FetchDataWithButton {
                 this.data = await api_call.json();
                 const filtered = this.data.filter((station) => station);
                 const items = filtered.map((station) => {
-                    stations = { station: station };
+                    this.stations = { station: station };
                     console.log(station.position);
                     return stations;
                 });
 
-                console.log(items);
                 console.log(this.data);
             };
         };
@@ -44,3 +43,14 @@ const toulouseMap = new CreateMap(
     "pk.eyJ1Ijoid2xhZDM0IiwiYSI6ImNqeHA5N25qYTBhZnozbmwzMmdmczBtcGoifQ.hYSWIqrFTCmtKzfE56Y4iw"
 );
 toulouseMap.displayMap();
+
+for (let key in fetchNewCityName) {
+    console.log(key);
+}
+
+const keys = Object.keys(toulouseMap);
+console.log(keys);
+
+document.querySelector(".searchButton").addEventListener("click", () => {
+    console.log(data.fetchNewCityName, "here is my data");
+});
