@@ -182,7 +182,8 @@ hr {
 
 /** Map **/
 
-#mapid {
+#mapid,
+#map {
     height: 50vh;
     width: 100%;
     border: 2px solid #eeb83b;
