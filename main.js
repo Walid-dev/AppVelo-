@@ -6,18 +6,11 @@
 const cityNameInp = document.querySelector("#cityNameInp");
 const searchBtn = document.querySelector("#searchBtn");
 
-const toulouseJcdData = new GetJcdecauxData("0765a9c499d7bbb55e963e4f6977e3ac9d3094c4");
-toulouseJcdData.getData.then(function(result) {
-    console.log(result);
-});
-
 function searchBtnOnClick() {
     searchBtn.addEventListener("click", () => {
+        // Démarrer Timer
+        const newTimer = new Timer(1200);
         console.log(cityNameInp.value);
-        const cityJcdData = new GetJcdecauxData("0765a9c499d7bbb55e963e4f6977e3ac9d3094c4", "toulouse");
-        cityJcdData.getData.then(function(result) {
-            console.log(result);
-        });
     });
 }
 

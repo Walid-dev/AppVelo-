@@ -1,83 +1,89 @@
-const carouselSlide = document.querySelector(".carousel-slide");
-const carouselImages = document.querySelectorAll(".carousel-slide img");
+class Slider {
+    constructor(carouselSlide, carouselImages, nextBtn, pauseBtn, prevBtn) {
+        this.carouselSlide = document.querySelector(carouselSlide);
+        this.carouselImages = document.querySelectorAll(carouselImages);
+        this.nextBtn = document.querySelector(nextBtn);
+        this.pauseBtn = document.querySelector(pauseBtn);
+        this.prevBtn = document.querySelector(prevBtn);
 
-var playPause = setInterval(function autoPlay() {
-  nextBtn.click();
-}, 5000);
-let play = true;
+        var playPause = setInterval(function autoPlay() {
+            this.nextBtn.click();
+        }, 5000);
+        let play = true;
 
-// Buttons
-const nextBtn = document.querySelector("#nextBtn");
-const pauseBtn = document.querySelector("#pauseBtn");
-const prevBtn = document.querySelector("#prevBtn");
+        // Buttons
 
-// Auto Slide Function function
+        // Auto Slide Function function
 
-pauseBtn.addEventListener("click", () => {
-  if (play) {
-    playPause = clearInterval(playPause);
-    play = false;
-  } else {
-    playPause = setInterval(function autoPlay() {
-      nextBtn.click();
-    }, 5000);
-    play = true;
-  }
-});
+        this.pauseBtn.addEventListener("click", () => {
+            if (play) {
+                playPause = clearInterval(playPause);
+                play = false;
+            } else {
+                playPause = setInterval(function autoPlay() {
+                    this.nextBtn.click();
+                }, 5000);
+                play = true;
+            }
+        });
 
-//Counter
+        //Counter
 
-let counter = 1;
-const size = carouselImages[0].clientWidth;
+        let counter = 1;
+        const size = this.carouselImages[0].clientWidth;
 
-carouselSlide.style.transform = "translateX(" + -100 * counter + "%)";
+        this.carouselSlide.style.transform = "translateX(" + -100 * counter + "%)";
 
-//Button Listeners
+        //Button Listeners
 
-nextBtn.addEventListener("click", () => {
-  if (counter >= carouselImages.length - 1) return;
-  carouselSlide.style.transition = "transform 1s ease-in-out";
-  counter++;
-  carouselSlide.style.transform = "translateX(" + -100 * counter + "%)";
-});
+        this.nextBtn.addEventListener("click", () => {
+            if (counter >= this.carouselImages.length - 1) return;
+            this.carouselSlide.style.transition = "transform 1s ease-in-out";
+            counter++;
+            this.carouselSlide.style.transform = "translateX(" + -100 * counter + "%)";
+        });
 
-prevBtn.addEventListener("click", () => {
-  if (counter <= 0) return;
-  carouselSlide.style.transition = "transform 1s ease-in-out";
-  counter--;
-  carouselSlide.style.transform = "translateX(" + -100 * counter + "%)";
-});
+        this.prevBtn.addEventListener("click", () => {
+            if (counter <= 0) return;
+            this.carouselSlide.style.transition = "transform 1s ease-in-out";
+            counter--;
+            this.carouselSlide.style.transform = "translateX(" + -100 * counter + "%)";
+        });
 
-carouselSlide.addEventListener("transitionend", () => {
-  //console.log(carouselImages[counter]);
-  if (carouselImages[counter].id === "lastClone") {
-    carouselSlide.style.transition = "none";
-    counter = carouselImages.length - 2;
-    carouselSlide.style.transform = "translateX(" + -100 * counter + "%)";
-  }
-});
+        this.carouselSlide.addEventListener("transitionend", () => {
+            //console.log(this.carouselImages[counter]);
+            if (this.carouselImages[counter].id === "lastClone") {
+                this.carouselSlide.style.transition = "none";
+                counter = this.carouselImages.length - 2;
+                this.carouselSlide.style.transform = "translateX(" + -100 * counter + "%)";
+            }
+        });
 
-carouselSlide.addEventListener("transitionend", () => {
-  if (carouselImages[counter].id === "firstClone") {
-    carouselSlide.style.transition = "none";
-    counter = carouselImages.length - counter;
-    carouselSlide.style.transform = "translateX(" + -100 * counter + "%)";
-  }
-});
+        this.carouselSlide.addEventListener("transitionend", () => {
+            if (this.carouselImages[counter].id === "firstClone") {
+                this.carouselSlide.style.transition = "none";
+                counter = this.carouselImages.length - counter;
+                this.carouselSlide.style.transform = "translateX(" + -100 * counter + "%)";
+            }
+        });
 
-document.onkeydown = function(event) {
-  switch (event.keyCode) {
-    case 37:
-      if (counter <= 0) return;
-      carouselSlide.style.transition = "transform 1s ease-in-out";
-      counter--;
-      carouselSlide.style.transform = "translateX(" + -100 * counter + "%)";
-      break;
-    case 39:
-      if (counter >= carouselImages.length - 1) return;
-      carouselSlide.style.transition = "transform 1s ease-in-out";
-      counter++;
-      carouselSlide.style.transform = "translateX(" + -100 * counter + "%)";
-      break;
-  }
-};
+        document.onkeydown = function(event) {
+            switch (event.keyCode) {
+                case 37:
+                    if (counter <= 0) return;
+                    this.carouselSlide.style.transition = "transform 1s ease-in-out";
+                    counter--;
+                    this.carouselSlide.style.transform = "translateX(" + -100 * counter + "%)";
+                    break;
+                case 39:
+                    if (counter >= this.carouselImages.length - 1) return;
+                    this.carouselSlide.style.transition = "transform 1s ease-in-out";
+                    counter++;
+                    this.carouselSlide.style.transform = "translateX(" + -100 * counter + "%)";
+                    break;
+            }
+        };
+    }
+}
+
+const SliderHeader = new Slider(".carousel-slide", ".carousel-slide img", "#nextBtn", "#pauseBtn", "#prevBtn");
