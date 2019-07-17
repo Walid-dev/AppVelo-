@@ -11,17 +11,20 @@ class CreateMap {
         this.data = data;
         this.text = document.querySelector(".text2");
 
+        // Get and the jcDecaux Api promise and use the data
         this.data = this.promise.then(
             function(data) {
                 console.log("leafletmap data", data);
-                let dataArray = [""];
+                // Pushes the data in an array
+                let dataArray = [data];
                 dataArray.push(data);
-
+                // Set the lat and lng to display the city
                 let longitude = data[0].position.lng;
                 let latitude = data[0].position.lat;
 
                 console.log(dataArray[1][1].position);
 
+                // Map Code using the variables settled above
                 const mymap = L.map(`${this.mapId}`).setView([latitude, longitude], this.zoom);
                 console.log(longitude, latitude);
                 const marker = L.marker([latitude, longitude]).addTo(mymap);
@@ -32,11 +35,23 @@ class CreateMap {
                     id: "mapbox.streets",
                     accessToken
                 }).addTo(mymap);
-                marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
-                let i = 0;
-                for (i = 0; i <= data.length; i++) {
-                    const stationsPosition = L.marker([data[i].position.lat, data[i].position.lng]).addTo(mymap);
-                    i++;
+
+                // The for loop to display stations and informations from the data
+                for (const stations of data) {
+                    console.log(stations[0]);
+                    let stationLatitude = stations.position.lat;
+                    let stationLongitude = stations.position.lng;
+                    let stationStatus = stations.status;
+                    let stationNumber = stations.name;
+
+                    let markers = L.marker([stationLatitude, stationLongitude]).addTo(mymap);
+                    markers.bindPopup("<p>" + stationNumber + "</p>");
+
+                    if (stations.available_bikes > 10) {
+                    } else {
+                    }
+
+                    var popup = L.popup();
                 }
             }.bind(this)
         );

@@ -1,7 +1,9 @@
 class Timer {
     constructor(seconds) {
         let countdown;
+        // Timer container
         const timerDisplay = document.querySelector(".display-timer");
+        // End Time container
         const endTimeDisplay = document.querySelector(".display-end_time");
         const now = Date.now();
         const then = now + seconds * 1000;
@@ -36,4 +38,4 @@ class Timer {
     }
 }
 
-const newTimer = new Timer(1200);
+// const newTimer = new Timer(1200);
