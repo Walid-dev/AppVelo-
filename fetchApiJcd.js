@@ -29,11 +29,13 @@ class FetchDataWithButton {
     }
 }
 
-const fetchNewCityName = new FetchDataWithButton("#search", ".searchButton", "0765a9c499d7bbb55e963e4f6977e3ac9d3094c4");
+const fetchNewCityName = new FetchDataWithButton(
+    "#search",
+    ".searchButton",
+    "0765a9c499d7bbb55e963e4f6977e3ac9d3094c4"
+);
 
 fetchNewCityName.fetchData();
-
-console.log(fetch);
 
 const toulouseMap = new CreateMap(
     "mapid",

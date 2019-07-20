@@ -160,12 +160,16 @@ hr {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 80vh;
 }
 
 .booking-wrapper {
-    height: 50vh;
     border-radius: 20px;
     border: 1px solid #eeb83b17;
+}
+
+.search_city_box {
+    height: 15vh;
 }
 
 /** Canvas **/
@@ -173,18 +177,19 @@ hr {
 #canvas {
     border: 2px solid #eeb83b;
     border-radius: 20px;
-    max-width: 100%;
-    height: 150px;
-    width: 80%;
-    margin-left: 10%;
     background: white;
+}
+
+.canvas_signature {
+    color: #eeb83b;
+    font-size: 1.1rem;
 }
 
 /** Map **/
 
 #mapid,
-#map {
-    height: 50vh;
+#mapid2 {
+    height: 70vh;
     width: 100%;
     border: 2px solid #eeb83b;
     border-radius: 20px;
@@ -197,7 +202,7 @@ hr {
 /** Form **/
 
 .main__input-container {
-    height: 40vh;
+    height: 70vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -218,6 +223,31 @@ hr {
     letter-spacing: 1px;
 }
 
+#information_fields {
+    height: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    list-style-type: none;
+    margin: 0;
+}
+
+#information_fields li {
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    margin: 0;
+    color: #eeb83b;
+}
+
+.booking_fields {
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .btn--shallow {
     font-size: 0.8rem;
     letter-spacing: 2px;
@@ -227,7 +257,7 @@ hr {
     color: white !important;
     border-radius: 3px;
     border: solid 2px #eeb83b;
-    padding: 0.7rem 1.5rem;
+    padding: 0.6rem 1.4rem;
 }
 
 .slide {
@@ -264,4 +294,24 @@ hr {
 .text2,
 .text3 {
     color: white;
+}
+
+/** Popup Style **/
+
+.leaflet-popup-content p {
+    margin: 5px 0px !important;
+}
+
+.stations_name {
+    color: #6e4e04;
+    font-size: 0.85rem;
+}
+
+.bike_stands {
+    font-size: 0.8rem;
+}
+
+.stations_status {
+    font-size: 1.12rem;
+    color: #eeb83b;
 }

@@ -1,6 +1,3 @@
-const jcdPromise = cityJcdData.getPromise;
-const jcdData = cityJcdData.data;
-
 class CreateMap {
     constructor(mapId, zoom, accessToken, data) {
         this.jcdData = cityJcdData.data;
@@ -36,30 +33,57 @@ class CreateMap {
                     accessToken
                 }).addTo(mymap);
 
-                // The for loop to display stations and informations from the data
+                // The for loop to display stations and information from the data
                 for (const stations of data) {
-                    console.log(stations[0]);
+                    // Declares variables of the stations information
                     let stationLatitude = stations.position.lat;
                     let stationLongitude = stations.position.lng;
                     let stationStatus = stations.status;
-                    let stationNumber = stations.name;
+                    let stationName = stations.name;
+                    let stationAdress = stations.adress;
+                    let availableBikeStands = stations.available_bike_stands;
+                    let availableBikes = stations.available_bikes;
 
+                    // Set the markers and their popups
                     let markers = L.marker([stationLatitude, stationLongitude]).addTo(mymap);
-                    markers.bindPopup("<p>" + stationNumber + "</p>");
+                    markers.bindPopup(
+                        "<p class=" +
+                            "stations_status>" +
+                            stationStatus +
+                            "</p><p class=" +
+                            "stations_name>Station: " +
+                            stationName +
+                            "</p><p class=" +
+                            "bike_stands" +
+                            ">Places: " +
+                            availableBikeStands +
+                            "</p><p class=" +
+                            "bike_stands" +
+                            ">Disponibles:" +
+                            availableBikes +
+                            "</p>"
+                    );
 
+                    markers.addEventListener("click", () => {
+                        document.getElementById("information_fields").innerHTML =
+                            "<li class=" +
+                            "adress_field >Adresse : " +
+                            stationName +
+                            "</li><li class=" +
+                            "place_field >Place : " +
+                            availableBikeStands +
+                            "</li><li class=" +
+                            "available_field >Disponible(s): " +
+                            availableBikes +
+                            "</li>";
+                    });
+
+                    // Check the stations availabilities to change de markers parameters
                     if (stations.available_bikes > 10) {
                     } else {
                     }
-
-                    var popup = L.popup();
                 }
             }.bind(this)
         );
     }
 }
-
-const displayNewMap = new CreateMap(
-    "mapid",
-    "11",
-    "pk.eyJ1Ijoid2xhZDM0IiwiYSI6ImNqeHA5N25qYTBhZnozbmwzMmdmczBtcGoifQ.hYSWIqrFTCmtKzfE56Y4iw"
-);
