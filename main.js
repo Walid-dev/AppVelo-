@@ -17,14 +17,22 @@ const displayNewMap = new CreateMap(
     "10",
     "pk.eyJ1Ijoid2xhZDM0IiwiYSI6ImNqeHA5N25qYTBhZnozbmwzMmdmczBtcGoifQ.hYSWIqrFTCmtKzfE56Y4iw"
 );
-//function searchBtnOnClick() {
-//    searchBtn.addEventListener("click", () => {
+
+const submittedValues = new CheckInputValues();
+const newTimer = new Timer(1200);
+
+submittedValues.checkIfString();
+submittedValues.StoreUserData;
+console.log(submittedValues.name);
+
+//function resaBtnOnClick() {
+//    resaBtn.addEventListener("click", () => {
 // Démarrer Timer
 // const newTimer = new Timer(1200);
 //       console.log(cityNameInp.value);
 //   });
 //}
 
-//searchBtnOnClick();
+//resaBtnOnClick();
 
 console.log(cityJcdData.cityNameValue);

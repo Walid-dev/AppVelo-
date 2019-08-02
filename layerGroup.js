@@ -46,28 +46,27 @@ class CreateMap {
 
                     stationStatus = "OPEN" ? "Station Ouverte" : "Station fermée ou en travaux";
 
-                    // Set the markers and their popups
-                    let markers = L.marker([stationLatitude, stationLongitude]).addTo(mymap);
-                    markers.bindPopup(
-                        "<p class=" +
-                            "stations_status>" +
-                            stationStatus +
-                            "</p><p class=" +
-                            "stations_name>Station: " +
-                            stationAdress +
-                            "</p><p class=" +
-                            "bike_stands" +
-                            ">Places: " +
-                            availableBikeStands +
-                            "</p><p class=" +
-                            "bike_stands" +
-                            ">Disponibles:" +
-                            availableBikes +
-                            "</p>"
-                    );
+                    if (stationLongitude <= -1.52) {
+                        var south = L.marker([stationLatitude, stationLongitude]);
+                        console.log("south", south);
+                    }
+                    if (stationLatitude > -1.52 && stationLatitude <= -1.54) {
+                        var east = L.marker([stationLatitude, stationLongitude]);
+                        console.log(east, "east");
+                    }
+                    if (stationLatitude > -1.54 && stationLatitude <= -1.56) {
+                        var west = L.marker([stationLatitude, stationLongitude]);
+                        console.log(west, "west");
+                    }
+                    if (stationLatitude > -1.56 && stationLatitude <= -1.59) {
+                        var north = L.marker([stationLatitude, stationLongitude]);
+                        console.log(north, "north");
+                    }
 
-                    $("#information_fields").hide();
-                    $(".booking_fields").hide();
+                    let nantes = L.layerGroup([south, east, west, north]);
+                    nantes.addTo(mymap);
+
+                    // Set the markers and their popups
 
                     markers.addEventListener("click", () => {
                         document.getElementById("information_fields").innerHTML =
@@ -80,20 +79,10 @@ class CreateMap {
                             "</li><li class=" +
                             "available_field >Disponible(s): " +
                             availableBikes +
-                            "</li><div><a class=" +
-                            "btn--booking" +
-                            ">Valider</a></div>";
+                            "</li>";
                         // Add the adress on timer fields
                         document.querySelector(".address_field_timer").innerHTML =
                             "<span class=" + "adress_timer>Vélo reservé à " + stationAdress + "</span>";
-
-                        // Hide explain fields and Display the information fields
-
-                        $("#information_fields").show();
-                        $(".btn--booking").click(function(e) {
-                            e.preventDefault();
-                            $(".booking_fields").fadeTo(400, 1);
-                        });
                     });
                 }
             }.bind(this)

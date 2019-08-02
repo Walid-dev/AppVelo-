@@ -26,18 +26,18 @@ class CheckInputValues {
         this.name = document.querySelector("#inputName");
         this.surname = document.querySelector("#inputSurname");
         this.city = document.querySelector("#cityNameInp");
-        this.btn = document.querySelector("#searchBtn");
+        this.btn = document.querySelector("#inputValidation");
+        this.nameLengthWarning = document.getElementById("nameLengthWarning");
+        this.userNameField = document.querySelector(".name_field_timer");
         this.checkIfString = function() {
             this.btn.addEventListener("click", () =>
                 this.name.value.length > 1 && this.surname.value.length > 1
-                    ? saveData1.saveUserData()
-                    : console.log("nom plus d'une letter")
+                    ? saveData1.saveUserData() &
+                      (this.nameLengthWarning.innerHTML = "") &
+                      (this.userNameField.innerHTML =
+                          "<span>par " + this.name.value + " " + this.surname.value + "</span>")
+                    : (this.nameLengthWarning.innerHTML = "Votre nom et prénom doivent comporter au moins 2 lettres.")
             );
         };
     }
 }
-
-const submittedValues = new CheckInputValues();
-submittedValues.checkIfString();
-submittedValues.StoreUserData;
-console.log(submittedValues.name);

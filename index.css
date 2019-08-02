@@ -160,7 +160,6 @@ hr {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80vh;
 }
 
 .booking-wrapper {
@@ -169,27 +168,16 @@ hr {
 }
 
 .search_city_box {
-    height: 15vh;
+    display: none !important;
 }
 
 /** Canvas **/
-
-#canvas {
-    border: 2px solid #eeb83b;
-    border-radius: 20px;
-    background: white;
-}
-
-.canvas_signature {
-    color: #eeb83b;
-    font-size: 1.1rem;
-}
 
 /** Map **/
 
 #mapid,
 #mapid2 {
-    height: 70vh;
+    height: 80vh;
     width: 100%;
     border: 2px solid #eeb83b;
     border-radius: 20px;
@@ -201,8 +189,9 @@ hr {
 
 /** Form **/
 
-.main__input-container {
-    height: 70vh;
+.main__input-container,
+.main__input-container-child {
+    min-height: 80vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -213,7 +202,6 @@ hr {
     display: inline-block;
     text-align: center;
     font-size: 0.9rem;
-    margin: 0 auto;
     padding: 0.5rem 0;
     border: 0;
     background: transparent;
@@ -225,12 +213,22 @@ hr {
 
 #information_fields {
     height: 10vh;
+    width: 80%;
+    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     list-style-type: none;
     margin: 0;
+}
+
+#nameLengthWarning {
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    margin: 1.5rem 0;
+    color: #eeb83b;
+    text-align: center;
 }
 
 #information_fields li {
@@ -240,12 +238,15 @@ hr {
     color: #eeb83b;
 }
 
+#information_fields div {
+    margin: 1.2rem 0rem;
+}
+
 .booking_fields {
-    height: 20vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .btn--shallow {
@@ -258,6 +259,38 @@ hr {
     border-radius: 3px;
     border: solid 2px #eeb83b;
     padding: 0.6rem 1.4rem;
+}
+
+.btn--booking {
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    background: transparent;
+    color: white !important;
+    border-radius: 3px;
+    border: solid 2px #eeb83b;
+    padding: 0.3rem 1rem;
+    margin: 1.2rem 0rem;
+}
+
+#canvas {
+    background: #e8e0d8;
+    border: 2px solid #eeb83b;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+
+#canvasDiv {
+    min-height: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-direction: column-reverse;
+    justify-content: space-evenly;
 }
 
 .slide {

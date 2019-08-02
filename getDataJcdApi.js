@@ -25,5 +25,3 @@ class GetJcdecauxData {
         };
     }
 }
-
-// Creates a new data data calling

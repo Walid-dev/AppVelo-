@@ -26,6 +26,11 @@
             integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
             crossorigin=""
         ></script>
+        <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"
+        ></script>
         <title>Title</title>
     </head>
     <body>
@@ -83,41 +88,44 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="main__input-container">
-                                    <div class="search_city_box d-flex flex-column align-items-center">
-                                        <input
-                                            type="text"
-                                            id="cityNameInp"
-                                            class="main__input"
-                                            name="city"
-                                            value=""
-                                            placeholder="Entrer une ville..."
-                                        />
-                                        <span>
-                                            <a id="searchBtn" class="btn btn--shallow slide searchButton mt-3"
-                                                >Chercher</a
-                                            >
-                                        </span>
-                                    </div>
+                                    <div class="main__input-container-child">
+                                        <div class="search_city_box d-flex flex-column align-items-center">
+                                            <input
+                                                type="text"
+                                                id="cityNameInp"
+                                                class="main__input"
+                                                name="city"
+                                                value=""
+                                                placeholder="Entrer une ville..."
+                                            />
+                                            <span>
+                                                <a id="searchBtn" class="btn btn--shallow slide searchButton mt-3"
+                                                    >Chercher</a
+                                                >
+                                            </span>
+                                        </div>
 
-                                    <ul id="information_fields" class="mt-3 mb-2"></ul>
-                                    <div class="booking_fields">
-                                        <input
-                                            type="text"
-                                            id="inputName"
-                                            class="main__input"
-                                            name="user_name"
-                                            placeholder="Entrer votre prénom"
-                                        />
-                                        <input
-                                            type="text"
-                                            id="inputSurname"
-                                            class="main__input"
-                                            name="user_surname"
-                                            placeholder="Entrer votre nom"
-                                        />
-                                        <span>
-                                            <a class="btn btn--shallow slide mt-3">Réserver</a>
-                                        </span>
+                                        <ul id="information_fields" class="mt-3 mb-2"></ul>
+                                        <div class="booking_fields">
+                                            <input
+                                                type="text"
+                                                id="inputName"
+                                                class="main__input mb-4"
+                                                name="user_name"
+                                                placeholder="Entrer votre prénom"
+                                            />
+                                            <input
+                                                type="text"
+                                                id="inputSurname"
+                                                class="main__input"
+                                                name="user_surname"
+                                                placeholder="Entrer votre nom"
+                                            />
+                                            <span id="nameLengthWarning"></span>
+                                            <div>
+                                                <a id="inputValidation" class="btn--booking">Signer</a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -125,23 +133,28 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="text-center">
-            <p class="canvas_signature mt-3">Signature:</p>
-            <canvas class="mt-2 mb-5" id="canvas"> </canvas>
+            <div class="container">
+                <div id="canvasDiv">
+                    <span>
+                        <a id="resaBtn" class="btn btn--shallow slide mt-3">Réserver</a>
+                    </span>
+                </div>
+            </div>
         </div>
 
         <div class="col-md-12 timer-container">
-            <div id="timer" class="display-timer">00:00</div>
-            <div id="timer" class="display-end_time"></div>
+            <div class="booking_info_on_timer">
+                <span class="address_field_timer">
+                    <span class="adress_timer"></span>
+                </span>
+                <span class="name_field_timer"></span>
+            </div>
+
+            <div id="timer" class="name_field_timer"></div>
+            <div class="display-timer"></div>
+            <div class="display-end_time"></div>
         </div>
-        <div class="text-center">
-            <div class="text"></div>
-            <div class="text1"></div>
-            <div class="text2"></div>
-            <div class="text3"></div>
-        </div>
+
         <footer id="sticky-footer" class="py-4 text-white-50">
             <div class="container text-center">
                 <small>App Vélo &copy; galaxysurfing.com</small>
@@ -149,12 +162,13 @@
         </footer>
 
         <!-- <script src="JCDecauxAPI.js"></script> -->
+        <script src="canvas.js"></script>
         <script src="getDataJcdApi.js"></script>
         <script src="leafletMap.js"></script>
         <script src="slider.js"></script>
         <script src="setTimer.js"></script>
         <script src="localStorage.js"></script>
-        <script src="canvas.js"></script>
+        <script src="jQueryEffects.js"></script>
         <script src="main.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
