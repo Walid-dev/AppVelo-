@@ -9,7 +9,9 @@ class FetchDataWithButton {
         this.result2 = [];
         this.fetchData = function() {
             const fetchCityName = async (city) => {
-                const api_call = await fetch(`https://api.jcdecaux.com/vls/v1/stations?contract=${city}&apiKey=${this.AppId}`);
+                const api_call = await fetch(
+                    `https://api.jcdecaux.com/vls/v1/stations?contract=${city}&apiKey=${this.AppId}`
+                );
                 const data = await api_call.json();
                 return { data };
             };
@@ -33,12 +35,13 @@ class FetchDataWithButton {
     }
 }
 
-const fetchNewCityName = new FetchDataWithButton("#search", ".searchButton", "0765a9c499d7bbb55e963e4f6977e3ac9d3094c4");
+const fetchNewCityName = new FetchDataWithButton(
+    "#search",
+    ".searchButton",
+    "0765a9c499d7bbb55e963e4f6977e3ac9d3094c4"
+);
 
 fetchNewCityName.fetchData();
-
-console.log(fetchNewCityName.result1);
-console.log(fetchNewCityName.result2);
 
 const toulouseMap = new CreateMap(
     "mapid",
