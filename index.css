@@ -175,9 +175,19 @@ hr {
 
 /** Map **/
 
+#mainSectionTitle {
+    text-align: center;
+    margin: 40px 0px 15px 0;
+    font-family: "Roboto Mono", sans-serif;
+    text-transform: uppercase;
+    font-weight: lighter;
+    font-size: 1.25rem;
+    letter-spacing: 2px;
+}
+
 #mapid,
 #mapid2 {
-    height: 80vh;
+    min-height: 70vh;
     width: 100%;
     border: 2px solid #eeb83b;
     border-radius: 20px;
@@ -191,7 +201,7 @@ hr {
 
 .main__input-container,
 .main__input-container-child {
-    min-height: 80vh;
+    min-height: 70vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -211,8 +221,18 @@ hr {
     letter-spacing: 1px;
 }
 
+.choose_station {
+    font-family: "Roboto Mono", sans-serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.1rem;
+    color: #eeb83b;
+    border: 1px solid #eeb83b6b;
+    border-radius: 8px;
+    padding: 10px 14px;
+    text-align: center;
+}
+
 #information_fields {
-    height: 10vh;
     width: 80%;
     text-align: center;
     display: flex;
@@ -223,19 +243,19 @@ hr {
     margin: 0;
 }
 
+#information_fields li {
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    color: #eeb83b;
+}
+
 #nameLengthWarning {
     font-size: 0.9rem;
     letter-spacing: 1px;
     margin: 1.5rem 0;
     color: #eeb83b;
     text-align: center;
-}
-
-#information_fields li {
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-    margin: 0;
-    color: #eeb83b;
 }
 
 #information_fields div {
@@ -289,11 +309,24 @@ hr {
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex-direction: column-reverse;
-    justify-content: space-evenly;
+    justify-content: center;
 }
 
-.slide {
+.canvasSignatureWarning {
+    font-family: "Roboto Mono", sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.1rem;
+    color: #eeb83b;
+    text-align: center;
+    margin-bottom: 18px;
+}
+
+.signature_validation_btn {
+    margin-top: 22px;
+}
+
+.slide,
+.btn--booking {
     transition: 0.5s ease-in-out;
     -webkit-transition: 0.5s ease-in-out;
     -moz-transition: 0.5s ease-in-out;
@@ -302,7 +335,9 @@ hr {
 }
 
 .slide:hover,
-.slide:focus {
+.btn--booking:hover,
+.slide:focus,
+.btn--booking:focus {
     box-shadow: inset 25em 0 0 0 #eeb83b;
     color: #000 !important;
     font-weight: bold;

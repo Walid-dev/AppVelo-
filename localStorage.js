@@ -20,6 +20,7 @@ class StoreUserData {
 }
 
 const saveData1 = new StoreUserData();
+const newCanvas = new CreateCanvas("canvasDiv", "480px", "280px");
 
 class CheckInputValues {
     constructor() {
@@ -29,14 +30,19 @@ class CheckInputValues {
         this.btn = document.querySelector("#inputValidation");
         this.nameLengthWarning = document.getElementById("nameLengthWarning");
         this.userNameField = document.querySelector(".name_field_timer");
+        let isCanvasOff = true;
+        // Check the name and surname length and store the data and display the canvas signature field or display the error
         this.checkIfString = function() {
             this.btn.addEventListener("click", () =>
-                this.name.value.length > 1 && this.surname.value.length > 1
+                this.name.value.length > 1 && this.surname.value.length > 1 && isCanvasOff
                     ? saveData1.saveUserData() &
+                      newCanvas.draw() &
+                      (isCanvasOff = false) &
                       (this.nameLengthWarning.innerHTML = "") &
                       (this.userNameField.innerHTML =
                           "<span>par " + this.name.value + " " + this.surname.value + "</span>")
-                    : (this.nameLengthWarning.innerHTML = "Votre nom et prénom doivent comporter au moins 2 lettres.")
+                    : (this.nameLengthWarning.innerHTML =
+                          "Vérifiiez que votre nom et prénom comportent au minimum 2 lettres et signez ci-dessous.")
             );
         };
     }

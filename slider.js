@@ -38,6 +38,7 @@ class Slider {
 
         this.nextBtn.addEventListener("click", () => {
             if (counter >= this.carouselImages.length - 1) return;
+            clearInterval(playPause);
             this.carouselSlide.style.transition = "transform 1s ease-in-out";
             counter++;
             this.carouselSlide.style.transform = "translateX(" + -100 * counter + "%)";

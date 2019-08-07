@@ -19,12 +19,9 @@ class CreateMap {
                 let longitude = data[0].position.lng;
                 let latitude = data[0].position.lat;
 
-                console.log(dataArray[1][1].position);
-
                 // Map Code using the variables settled above
                 const mymap = L.map(`${this.mapId}`).setView([latitude, longitude], this.zoom);
                 console.log(longitude, latitude);
-                const marker = L.marker([latitude, longitude]).addTo(mymap);
                 L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
                     attribution:
                         'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -34,6 +31,8 @@ class CreateMap {
                 }).addTo(mymap);
 
                 // The for loop to display stations and information from the data
+                // Create Cluster
+                let cluster = L.markerClusterGroup();
                 for (const stations of data) {
                     // Declares variables of the stations information
                     let stationLatitude = stations.position.lat;
@@ -44,10 +43,12 @@ class CreateMap {
                     let availableBikeStands = stations.available_bike_stands;
                     let availableBikes = stations.available_bikes;
 
+                    // Display the station status in french
                     stationStatus = "OPEN" ? "Station Ouverte" : "Station fermée ou en travaux";
 
                     // Set the markers and their popups
-                    let markers = L.marker([stationLatitude, stationLongitude]).addTo(mymap);
+                    let markers = L.marker([stationLatitude, stationLongitude]).addTo(cluster);
+                    mymap.addLayer(cluster);
                     markers.bindPopup(
                         "<p class=" +
                             "stations_status>" +
@@ -66,10 +67,14 @@ class CreateMap {
                             "</p>"
                     );
 
-                    $("#information_fields").hide();
+                    // Hide the input booking fields
+
+                    $(".main__input-container-child").hide();
                     $(".booking_fields").hide();
 
+                    // Display stations information marker onclick
                     markers.addEventListener("click", () => {
+                        $(".main__input-container-child2").hide();
                         document.getElementById("information_fields").innerHTML =
                             "<li class=" +
                             "adress_field >Adresse : " +
@@ -83,16 +88,19 @@ class CreateMap {
                             "</li><div><a class=" +
                             "btn--booking" +
                             ">Valider</a></div>";
+
                         // Add the adress on timer fields
                         document.querySelector(".address_field_timer").innerHTML =
                             "<span class=" + "adress_timer>Vélo reservé à " + stationAdress + "</span>";
 
-                        // Hide explain fields and Display the information fields
-
-                        $("#information_fields").show();
+                        // Hide explaining fields and Display the information fields
+                        $(".main__input-container-child").show();
                         $(".btn--booking").click(function(e) {
-                            e.preventDefault();
                             $(".booking_fields").fadeTo(400, 1);
+                        });
+                        // Display the signature canvas box
+                        $("#inputValidation").click(function(e) {
+                            e.preventDefault();
                         });
                     });
                 }
@@ -100,5 +108,3 @@ class CreateMap {
         );
     }
 }
-
-console.log(name);

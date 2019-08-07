@@ -31,6 +31,9 @@
             integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
             crossorigin="anonymous"
         ></script>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
+        <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
+        <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
         <title>Title</title>
     </head>
     <body>
@@ -60,7 +63,7 @@
                 <div class="carousel-text-container">
                     <h1>Vélo App</h1>
                     <p class="mt-1">Réserver votre vélo en 3 cliques.</p>
-                    <div class="btn btn--shallow mt-3">Reserver</div>
+                    <div><a href="#mapid" class="btn btn--shallow slide mt-3">Reserver</a></div>
                 </div>
                 <i id="prevBtn" class="fas fa-arrow-left"></i>
                 <div id="pauseBtnContainer">
@@ -68,17 +71,19 @@
                 </div>
                 <i id="nextBtn" class="fas fa-arrow-right"></i>
                 <div class="carousel-slide">
-                    <img class="img-fluid" src="images/img5.jpg" id="lastClone" alt="" />
-                    <img class="img-fluid" src="images/img2.jpg" alt="" />
+                    <img class="img-fluid" src="images/img1.jpg" id="lastClone" alt="" />
                     <img class="img-fluid" src="images/img3.jpg" alt="" />
+                    <img class="img-fluid" src="images/img2.jpg" alt="" />
                     <img class="img-fluid" src="images/img4.jpg" alt="" />
-                    <img class="img-fluid" src="images/img5.jpg" alt="" />
-                    <img class="img-fluid" src="images/img1.jpg" id="firstClone" alt="" />
+                    <img class="img-fluid" src="images/img1.jpg" alt="" />
+                    <img class="img-fluid" src="images/img3.jpg" id="firstClone" alt="" />
                 </div>
             </div>
         </div>
 
         <div class="map-container container-fluid">
+            <h2 id="mainSectionTitle">Choisissez votre station</h2>
+            <hr class="mb-4" />
             <div class="row search-container">
                 <div class="map-container col-sm-7 mt-3 mb-3 pt-2 pb-2">
                     <div class="map-wrapper"><div id="mapid"></div></div>
@@ -122,10 +127,18 @@
                                                 placeholder="Entrer votre nom"
                                             />
                                             <span id="nameLengthWarning"></span>
+                                            <span id="canvasIsDisplayedWarning"></span>
+
                                             <div>
-                                                <a id="inputValidation" class="btn--booking">Signer</a>
+                                                <a id="inputValidation" class="btn--booking">Continuer</a>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="main__input-container-child2">
+                                        <p class="choose_station">
+                                            Choisissez une station<br />
+                                            sur la carte.
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -135,9 +148,8 @@
             </div>
             <div class="container">
                 <div id="canvasDiv">
-                    <span>
-                        <a id="resaBtn" class="btn btn--shallow slide mt-3">Réserver</a>
-                    </span>
+                    <span class="canvasSignatureWarning"></span>
+                    <span></span>
                 </div>
             </div>
         </div>
@@ -162,13 +174,12 @@
         </footer>
 
         <!-- <script src="JCDecauxAPI.js"></script> -->
-        <script src="canvas.js"></script>
         <script src="getDataJcdApi.js"></script>
         <script src="leafletMap.js"></script>
-        <script src="slider.js"></script>
+        <script src="canvas2.js"></script>
+        <script src="slider2.js"></script>
         <script src="setTimer.js"></script>
         <script src="localStorage.js"></script>
-        <script src="jQueryEffects.js"></script>
         <script src="main.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>

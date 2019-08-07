@@ -19,7 +19,6 @@ const displayNewMap = new CreateMap(
 );
 
 const submittedValues = new CheckInputValues();
-const newTimer = new Timer(1200);
 
 submittedValues.checkIfString();
 submittedValues.StoreUserData;
