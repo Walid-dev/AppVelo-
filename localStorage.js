@@ -1,5 +1,9 @@
 class StoreUserData {
     constructor() {
+        this.setInputValueWithLocalStorage = function() {
+            document.getElementById("inputName").value = JSON.parse(localStorage.name);
+            document.getElementById("inputLastName").value = JSON.parse(localStorage.lastName);
+        };
         this.saveUserData = function() {
             let userData = {
                 name: submittedValues.name.value,
@@ -20,6 +24,7 @@ class StoreUserData {
 }
 
 const saveData1 = new StoreUserData();
+saveData1.setInputValueWithLocalStorage();
 const newCanvas = new CreateCanvas("canvasDiv", "480px", "280px");
 
 class CheckInputValues {

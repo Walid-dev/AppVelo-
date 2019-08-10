@@ -8,6 +8,11 @@ class CreateMap {
         this.data = data;
         this.text = document.querySelector(".text2");
 
+        setInterval(() => {
+            this.promise;
+            console.log("refreshed in leafletMap.js");
+        }, 6000);
+
         // Get and the jcDecaux Api promise and use the data
         this.data = this.promise.then(
             function(data) {

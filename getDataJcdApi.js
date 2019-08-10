@@ -11,6 +11,11 @@ class GetJcdecauxData {
             this.latitude = latitude;
             this.number = number;
 
+            setInterval(() => {
+                this.getPromise;
+                console.log("refreshed in GetJcdecauxData.js");
+            }, 5000);
+
             // Api Calling with fetch method
             this.getPromise = fetch(
                 `https://api.jcdecaux.com/vls/v1/stations?contract=${this.cityNameValue}&apiKey=${this.apiKey}`

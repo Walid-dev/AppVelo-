@@ -12,6 +12,11 @@ cityJcdData.displayData();
 const jcdPromise = cityJcdData.getPromise;
 const jcdData = cityJcdData.data;
 
+setInterval(() => {
+    console.log("refreshed in main.js");
+    cityJcdData.getPromise;
+}, 5000);
+
 const displayNewMap = new CreateMap(
     "mapid",
     "10",
@@ -35,3 +40,8 @@ console.log(submittedValues.name);
 //resaBtnOnClick();
 
 console.log(cityJcdData.cityNameValue);
+
+function test() {
+    console.log(localStorage);
+}
+test();
