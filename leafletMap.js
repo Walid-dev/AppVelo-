@@ -1,15 +1,21 @@
 class CreateMap {
-    constructor(mapId, zoom, accessToken, data) {
+    constructor(mapId, zoom, accessToken) {
         this.jcdData = cityJcdData.data;
         this.mapId = mapId;
         this.zoom = zoom;
         this.accessToken = accessToken;
         this.promise = jcdPromise;
-        this.data = data;
         this.text = document.querySelector(".text2");
 
+        this.testOut = function() {
+            this.promise.then(function(data) {
+                for (const stations of data) {
+                }
+            });
+        };
+
         // Get and the jcDecaux Api promise and use the data
-        this.data = this.promise.then(
+        this.promise.then(
             function(data) {
                 console.log("leafletmap data", data);
                 // Pushes the data in an array
@@ -71,11 +77,10 @@ class CreateMap {
                             "<p>" +
                             lastUpdate +
                             "</p>"
-                    );
+                    ),
+                        // Hide the input booking fields
 
-                    // Hide the input booking fields
-
-                    $(".main__input-container-child").hide();
+                        $(".main__input-container-child").hide();
                     $(".booking_fields").hide();
 
                     // Display stations information marker onclick
@@ -104,11 +109,13 @@ class CreateMap {
                         $(".btn--booking").click(function(e) {
                             $(".booking_fields").fadeTo(400, 1);
                             $("#information_fields").css("display", "none");
+
+                            // Push the data in the Session Storage
+
+                            sessionStorage.setItem("adresse", JSON.stringify(stationAdress));
+                            sessionStorage.setItem("station_name", JSON.stringify(stationName));
                         });
                         // Display the signature canvas box
-                        $("#inputValidation").click(function(e) {
-                            e.preventDefault();
-                        });
                     });
                 }
             }.bind(this)

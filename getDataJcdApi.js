@@ -17,11 +17,6 @@ class GetJcdecauxData {
             ).then((response) => response.json());
 
             // Ready to use the data from the promise
-            this.data = this.getPromise.then(
-                function(data) {
-                    console.log("jcdecaux data", data);
-                }.bind(this)
-            );
         };
     }
 }

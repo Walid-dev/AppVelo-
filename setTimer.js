@@ -16,6 +16,8 @@ class Timer {
             if (secondsLeft < 0) {
                 clearInterval(countdown);
                 alert("Reservation expirée.");
+                sessionStorage.clear();
+                location.reload();
                 return;
             }
             // Display it

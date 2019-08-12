@@ -72,11 +72,18 @@ class CreateCanvas {
                     context.stroke();
                 }
                 console.log(isSigned);
+
+                if (isSigned >= 1800) {
+                    document.querySelector(".canvasSignatureWarning").innerHTML =
+                        "Signature accéptée.<br>Vous pouvez maintenant valider.";
+                } else {
+                    return;
+                }
             }
             button.innerHTML = "<a id=" + "resaBtn " + "class=" + "btn--shallow" + ">Réserver</a>";
             let isTimerOn = false;
             $("#resaBtn").click(function(e) {
-                if (!isTimerOn && isSigned >= 1600) {
+                if (!isTimerOn && isSigned >= 1800) {
                     e.preventDefault();
                     $(".main__input-container-child").hide(400);
                     $("#canvas").hide(400);
@@ -89,8 +96,9 @@ class CreateCanvas {
                 } else {
                     document.querySelector(".canvasSignatureWarning").innerHTML =
                         "Une reservation à deja été effectuée.<br>Celle-ci sera annulée.<br>Voulez vous effectuer une nouvelle réservation ?";
-                    button.innerHTML = "<a id=" + "resaBtn " + "class=" + "btn--shallow" + ">Recommencer</a>";
+                    button.innerHTML = "<a id=" + "resaBtn " + "class=" + "btn--shallow" + ">Nouvelle réservation</a>";
                     $("#resaBtn").click(function(e) {
+                        sessionStorage.clear();
                         location.reload();
                     });
                 }

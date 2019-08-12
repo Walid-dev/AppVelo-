@@ -15,13 +15,13 @@ setInterval(() => {
 }, 5000);
 
 const jcdPromise = cityJcdData.getPromise;
-const jcdData = cityJcdData.data;
-
 const displayNewMap = new CreateMap(
     "mapid",
     "10",
     "pk.eyJ1Ijoid2xhZDM0IiwiYSI6ImNqeHA5N25qYTBhZnozbmwzMmdmczBtcGoifQ.hYSWIqrFTCmtKzfE56Y4iw"
 );
+
+displayNewMap.testOut();
 
 const saveData1 = new StoreUserData();
 const submittedValues = new CheckInputValues();
@@ -32,3 +32,5 @@ submittedValues.StoreUserData;
 
 // Create Canvas with the canvas-box ID the height and width
 const newCanvas = new CreateCanvas("canvasDiv", "480px", "280px");
+
+const storeBookingData = new SessionStorage();
