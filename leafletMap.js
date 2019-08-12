@@ -8,11 +8,6 @@ class CreateMap {
         this.data = data;
         this.text = document.querySelector(".text2");
 
-        setInterval(() => {
-            this.promise;
-            console.log("refreshed in leafletMap.js");
-        }, 6000);
-
         // Get and the jcDecaux Api promise and use the data
         this.data = this.promise.then(
             function(data) {
@@ -35,9 +30,11 @@ class CreateMap {
                     accessToken
                 }).addTo(mymap);
 
+                // Create markers
+                let cluster = L.markerClusterGroup();
+
                 // The for loop to display stations and information from the data
                 // Create Cluster
-                let cluster = L.markerClusterGroup();
                 for (const stations of data) {
                     // Declares variables of the stations information
                     let stationLatitude = stations.position.lat;
@@ -47,6 +44,7 @@ class CreateMap {
                     let stationName = stations.name;
                     let availableBikeStands = stations.available_bike_stands;
                     let availableBikes = stations.available_bikes;
+                    let lastUpdate = stations.last_update;
 
                     // Display the station status in french
                     stationStatus = "OPEN" ? "Station Ouverte" : "Station fermée ou en travaux";
@@ -69,6 +67,9 @@ class CreateMap {
                             "bike_stands" +
                             ">Disponibles:" +
                             availableBikes +
+                            "</p>" +
+                            "<p>" +
+                            lastUpdate +
                             "</p>"
                     );
 
@@ -102,6 +103,7 @@ class CreateMap {
                         $(".main__input-container-child").show();
                         $(".btn--booking").click(function(e) {
                             $(".booking_fields").fadeTo(400, 1);
+                            $("#information_fields").css("display", "none");
                         });
                         // Display the signature canvas box
                         $("#inputValidation").click(function(e) {

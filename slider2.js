@@ -81,12 +81,15 @@ document.onkeydown = function(event) {
             carouselSlide.style.transition = "transform 0.75s ease-in-out";
             counter--;
             carouselSlide.style.transform = "translateX(" + -100 * counter + "%)";
+            clearInterval(playPause);
             break;
         case 39:
             if (counter >= carouselImages.length - 1) return;
             carouselSlide.style.transition = "transform 0.75s ease-in-out";
             counter++;
             carouselSlide.style.transform = "translateX(" + -100 * counter + "%)";
+            clearInterval(playPause);
+
             break;
     }
 };

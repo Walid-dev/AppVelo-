@@ -1,31 +1,50 @@
 class StoreUserData {
     constructor() {
-        this.setInputValueWithLocalStorage = function() {
-            document.getElementById("inputName").value = JSON.parse(localStorage.name);
-            document.getElementById("inputLastName").value = JSON.parse(localStorage.lastName);
-        };
         this.saveUserData = function() {
-            let userData = {
-                name: submittedValues.name.value,
-                surname: submittedValues.surname.value,
-                city: submittedValues.city.value
-            };
+            let name = submittedValues.name.value;
+            let lastName = submittedValues.surname.value;
 
-            let userData_serialized = JSON.stringify(userData);
-            console.log(userData_serialized);
+            if (name.length > 1 && lastName.length > 1) {
+                let name_serialized = JSON.stringify(name);
+                let lastName_serialized = JSON.stringify(lastName);
 
-            localStorage.setItem("userData", userData_serialized);
-            console.log(localStorage);
+                let nameValue = JSON.parse(name_serialized);
+                let lastNameValue = JSON.parse(lastName_serialized);
 
-            let userData_deserialized = JSON.parse(localStorage.getItem("userData"));
-            console.log(userData_deserialized);
+                console.log(nameValue, lastNameValue);
+
+                localStorage.setItem("name", name_serialized);
+                localStorage.setItem("lastName", lastName_serialized);
+
+                console.log(localStorage);
+            } else {
+                document.getElementById("nameLengthWarning").innerHTML =
+                    "Vérifiiez que votre nom et prénom comportent au minimum 2 lettres et signez ci-dessous.";
+            }
         };
     }
 }
 
-const saveData1 = new StoreUserData();
-saveData1.setInputValueWithLocalStorage();
-const newCanvas = new CreateCanvas("canvasDiv", "480px", "280px");
+class SetInputsValuesWithLocalStorageData {
+    constructor() {
+        let nameValue = localStorage.getItem("name");
+        let lastNameValue = localStorage.getItem("lastName");
+
+        console.log("hello", nameValue, lastNameValue);
+        function setInputsValues() {
+            if (nameValue && lastNameValue) {
+                console.log("existssss");
+                document.getElementById("inputName").setAttribute("value", JSON.parse(nameValue));
+                document.getElementById("inputSurname").setAttribute("value", JSON.parse(lastNameValue));
+            } else {
+                return;
+            }
+        }
+        setInputsValues();
+    }
+}
+
+const setNameAndLastNameInputFromLocalStorageData = new SetInputsValuesWithLocalStorageData();
 
 class CheckInputValues {
     constructor() {
@@ -40,8 +59,8 @@ class CheckInputValues {
         this.checkIfString = function() {
             this.btn.addEventListener("click", () =>
                 this.name.value.length > 1 && this.surname.value.length > 1 && isCanvasOff
-                    ? saveData1.saveUserData() &
-                      newCanvas.draw() &
+                    ? newCanvas.draw() &
+                      saveData1.saveUserData() &
                       (isCanvasOff = false) &
                       (this.nameLengthWarning.innerHTML = "") &
                       (this.userNameField.innerHTML =
