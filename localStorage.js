@@ -67,9 +67,9 @@ class CheckInputValues {
                       $(this.yellowArrow).fadeIn(300) &
                       (this.canvasSignatureText.innerHTML = "Maintenir clic droit sur le champs puis signer.") &
                       (isCanvasOff = false) &
-                      (this.nameLengthWarning.innerHTML = "Veuillez signez dans le champ ci-dessous.") &
+                      (this.nameLengthWarning.innerHTML = "Veuillez signez dans la partie ci-dessous.") &
                       (this.userNameField.innerHTML =
-                          "<span>par " + this.name.value + " " + this.surname.value + "</span>")
+                          "<span>Nom : " + this.name.value + "<br> " + "Prenom : " + this.surname.value + "</span>")
                     : (this.nameLengthWarning.innerHTML =
                           "Vérifiiez que votre nom et prénom comportent au minimum 2 lettres et signez ci-dessous.")
             );

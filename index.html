@@ -67,7 +67,8 @@
                 </div>
                 <i id="prevBtn" class="fas fa-arrow-left"></i>
                 <div id="pauseBtnContainer">
-                    <i id="pauseBtn" class="fas fa-pause"></i>
+                    <i id="pauseBtn" class="">Pause</i>
+                    <i id="pauseIcon"></i>
                 </div>
                 <i id="nextBtn" class="fas fa-arrow-right"></i>
                 <div class="carousel-slide">
@@ -86,7 +87,9 @@
             <hr class="mb-4" />
             <div class="row search-container">
                 <div class="map-container col-sm-7 mt-3 mb-3 pt-2 pb-2">
-                    <div class="map-wrapper"><div id="mapid"></div></div>
+                    <div id="mapBox" class="map-wrapper">
+                        <div id="mapid"></div>
+                    </div>
                 </div>
                 <div class="booking-container col-sm-5">
                     <div class="booking-wrapper mt-3 mb-3 pt-2 pb-2">
@@ -158,7 +161,7 @@
             </div>
             <div class="container">
                 <div id="canvasDiv">
-                    <span class="canvasSignatureWarning"></span>
+                    <span class="canvasSignatureWarning mb-4"></span>
                     <span></span>
                 </div>
             </div>
@@ -169,7 +172,7 @@
                 <span class="address_field_timer">
                     <span class="adress_timer"></span>
                 </span>
-                <span class="name_field_timer"></span>
+                <div class="name_field_timer">Pas de réservation en cours.</div>
             </div>
 
             <div id="timer" class="name_field_timer"></div>
@@ -184,11 +187,11 @@
         </footer>
 
         <!-- <script src="JCDecauxAPI.js"></script> -->
-        <script src="getDataJcdApi.js"></script>
+        <script src="JcDecauxData.js"></script>
         <script src="leafletMap.js"></script>
-        <script src="canvas2.js"></script>
-        <script src="slider2.js"></script>
-        <script src="setTimer.js"></script>
+        <script src="canvas.js"></script>
+        <script src="slider.js"></script>
+        <script src="Timer.js"></script>
         <script src="localStorage.js"></script>
         <script src="main.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

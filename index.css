@@ -141,15 +141,59 @@ hr {
 
 #pauseBtn {
     position: absolute;
-    bottom: 5%;
-    z-index: 10;
     left: 50%;
-    font-size: 18px;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 15px;
     color: white;
     opacity: 0.7;
     cursor: pointer;
     transform: translate(-50%, -50%);
+    color: #eeb83b88;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+}
+
+#pauseBtnContainer {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    left: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.555);
+    height: 30px;
+    width: 55px;
+    border-radius: 15%;
+    cursor: pointer;
+    -webkit-border-radius: 15%;
+    -moz-border-radius: 15%;
+    -ms-border-radius: 15%;
+    -o-border-radius: 15%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+}
+
+#pauseBtnContainer:hover {
+    border-color: #fff;
+    transition: 0.5s ease;
+    -webkit-transition: 0.5s ease;
+    -moz-transition: 0.5s ease;
+    -ms-transition: 0.5s ease;
+    -o-transition: 0.5s ease;
+}
+
+#pauseBtnContainer:hover #pauseBtn {
     color: #eeb83b;
+    transition: 0.5s ease;
+    -webkit-transition: 0.5s ease;
+    -moz-transition: 0.5s ease;
+    -ms-transition: 0.5s ease;
+    -o-transition: 0.5s ease;
 }
 
 /** Footer **/
@@ -179,6 +223,15 @@ hr {
     font-weight: lighter;
     font-size: 1.25rem;
     letter-spacing: 2px;
+}
+
+#mapBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 40vh;
+    color: #eeb83b;
 }
 
 #mapid,
@@ -230,6 +283,7 @@ hr {
 
 #information_fields {
     width: 80%;
+    min-height: 50vh;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -239,7 +293,8 @@ hr {
     margin: 0;
 }
 
-#information_fields li {
+#information_fields li,
+#mapBox li {
     font-size: 0.95rem;
     letter-spacing: 1px;
     margin-bottom: 8px;
@@ -260,8 +315,8 @@ hr {
 
 #arrowYellow {
     display: none;
-    width: 18%;
-    margin-left: 41%;
+    width: 10%;
+    margin-left: 45%;
     transform: rotate(90deg);
     -webkit-transform: rotate(90deg);
     -moz-transform: rotate(90deg);
@@ -270,6 +325,7 @@ hr {
 }
 
 .booking_fields {
+    min-height: 50vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -286,6 +342,7 @@ hr {
     border-radius: 3px;
     border: solid 2px #eeb83b;
     padding: 0.6rem 1.4rem;
+    cursor: pointer;
 }
 
 .btn--booking {
@@ -299,6 +356,7 @@ hr {
     border: solid 2px #eeb83b;
     padding: 0.3rem 1rem;
     margin: 1.2rem 0rem;
+    cursor: pointer;
 }
 
 #canvas {
@@ -309,6 +367,7 @@ hr {
     -moz-border-radius: 20px;
     -ms-border-radius: 20px;
     -o-border-radius: 20px;
+    cursor: crosshair;
 }
 
 #canvasDiv {
@@ -355,7 +414,7 @@ hr {
 /** Timer **/
 
 .timer-container {
-    height: 100px;
+    min-height: 17vh;
     font-size: 16px;
     background: #ce9000;
     display: flex;

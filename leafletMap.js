@@ -101,14 +101,27 @@ class CreateMap {
                             ">Valider</a></div>";
 
                         // Add the adress on timer fields
-                        document.querySelector(".address_field_timer").innerHTML =
-                            "<span class=" + "adress_timer>Vélo reservé à " + stationAdress + "</span>";
 
                         // Hide explaining fields and Display the information fields
                         $(".main__input-container-child").show();
-                        $(".btn--booking").click(function(e) {
+                        $(".btn--booking").click(function() {
                             $(".booking_fields").fadeTo(400, 1);
                             $("#information_fields").css("display", "none");
+
+                            $("#resaBtn").click(function() {
+                                console.log("clicked");
+                                document.getElementById("mapBox").innerHTML =
+                                    "<h2>" +
+                                    submittedValues.name.value +
+                                    "</h2><h3>" +
+                                    submittedValues.surname.value +
+                                    "</h3><h4>A " +
+                                    stationAdress +
+                                    "</h4>";
+
+                                document.querySelector(".address_field_timer").innerHTML =
+                                    "<span class=" + "adress_timer>Vélo reservé à " + stationAdress + "</span>";
+                            });
 
                             // Push the data in the Session Storage
 
