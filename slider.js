@@ -3,7 +3,9 @@ const carouselImages = document.querySelectorAll(".carousel-slide img");
 
 var playPause = setInterval(function autoPlay() {
     nextBtn.click();
-}, 5000);
+}, 6000);
+
+// Play status
 let play = true;
 
 // Buttons
@@ -79,6 +81,8 @@ carouselSlide.addEventListener("transitionend", () => {
         carouselSlide.style.transform = "translateX(" + -100 * counter + "%)";
     }
 });
+
+// Switches Slider images with the keybord
 
 document.onkeydown = function(event) {
     switch (event.keyCode) {

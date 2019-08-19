@@ -11,12 +11,12 @@ class StoreUserData {
                 let nameValue = JSON.parse(name_serialized);
                 let lastNameValue = JSON.parse(lastName_serialized);
 
-                console.log(nameValue, lastNameValue);
+                //  console.log(nameValue, lastNameValue);
 
                 localStorage.setItem("name", name_serialized);
                 localStorage.setItem("lastName", lastName_serialized);
 
-                console.log(localStorage);
+                //   console.log(localStorage);
             } else {
                 document.getElementById("nameLengthWarning").innerHTML =
                     "Vérifiiez que votre nom et prénom comportent au minimum 2 lettres et signez ci-dessous.";
@@ -30,10 +30,9 @@ class SetInputsValuesWithLocalStorageData {
         let nameValue = localStorage.getItem("name");
         let lastNameValue = localStorage.getItem("lastName");
 
-        console.log("hello", nameValue, lastNameValue);
+        //  console.log("hello", nameValue, lastNameValue);
         function setInputsValues() {
             if (nameValue && lastNameValue) {
-                console.log("existssss");
                 document.getElementById("inputName").setAttribute("value", JSON.parse(nameValue));
                 document.getElementById("inputSurname").setAttribute("value", JSON.parse(lastNameValue));
             } else {
@@ -81,7 +80,7 @@ class SessionStorage {
     constructor() {
         this.promise = jcdPromise;
         this.promise.then(function(data) {
-            console.log(data, "voilaaaaaaaa");
+            // console.log(data, "voilaaaaaaaa");
 
             for (const stations of data) {
             }

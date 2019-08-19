@@ -2,6 +2,22 @@
 var today = new Date();
 var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 
+function setTimerOnLoad() {
+    if (sessionStorage.second_left > 0) {
+        const timerOnLoad = new Timer(sessionStorage.second_left);
+        document.querySelector(".name_field_timer").innerHTML = "Une réservation est déja en cours";
+        $("#test").click(function(e) {
+            e.preventDefault();
+            console.log("clicked");
+            clearInterval(timerOnLoad.countdown);
+            sessionStorage.clear();
+            document.querySelector(".name_field_timer").innerHTML = "La réservation à été annulée";
+        });
+    }
+}
+
+window.onload = setTimerOnLoad();
+
 //const cityNameInp = document.getElementById("cityNameInput");
 //const searchBtn = document.querySelector(".searchButton");
 
@@ -13,7 +29,7 @@ cityJcdData.displayData();
 
 setInterval(() => {
     cityJcdData.displayData();
-    console.log("refreshed in main.js with displayData()");
+    //  console.log("refreshed in main.js with displayData()");
 }, 5000);
 
 const jcdPromise = cityJcdData.getPromise;
@@ -22,6 +38,8 @@ const displayNewMap = new CreateMap(
     "10",
     "pk.eyJ1Ijoid2xhZDM0IiwiYSI6ImNqeHA5N25qYTBhZnozbmwzMmdmczBtcGoifQ.hYSWIqrFTCmtKzfE56Y4iw"
 );
+
+displayNewMap.testOut();
 
 const saveData1 = new StoreUserData();
 const submittedValues = new CheckInputValues();

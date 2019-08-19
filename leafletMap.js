@@ -10,14 +10,15 @@ class CreateMap {
         this.testOut = function() {
             this.promise.then(function(data) {
                 for (const stations of data) {
+                    //  console.log(stations);
                 }
             });
         };
 
-        // Get and the jcDecaux Api promise and use the data
+        // Get  the jcDecaux Api promise and use the data
         this.promise.then(
             function(data) {
-                console.log("leafletmap data", data);
+                //  console.log("leafletmap data", data);
                 // Pushes the data in an array
                 let dataArray = [data];
                 dataArray.push(data);
@@ -27,7 +28,7 @@ class CreateMap {
 
                 // Map Code using the variables settled above
                 const mymap = L.map(`${this.mapId}`).setView([latitude, longitude], this.zoom);
-                console.log(longitude, latitude);
+                //  console.log(longitude, latitude);
                 L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
                     attribution:
                         'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -36,11 +37,10 @@ class CreateMap {
                     accessToken
                 }).addTo(mymap);
 
-                // Create markers
+                // Creates Cluster
                 let cluster = L.markerClusterGroup();
 
                 // The for loop to display stations and information from the data
-                // Create Cluster
                 for (const stations of data) {
                     // Declares variables of the stations information
                     let stationLatitude = stations.position.lat;
@@ -107,21 +107,6 @@ class CreateMap {
                         $(".btn--booking").click(function() {
                             $(".booking_fields").fadeTo(400, 1);
                             $("#information_fields").css("display", "none");
-
-                            $("#resaBtn").click(function() {
-                                console.log("clicked");
-                                document.getElementById("mapBox").innerHTML =
-                                    "<h2>" +
-                                    submittedValues.name.value +
-                                    "</h2><h3>" +
-                                    submittedValues.surname.value +
-                                    "</h3><h4>A " +
-                                    stationAdress +
-                                    "</h4>";
-
-                                document.querySelector(".address_field_timer").innerHTML =
-                                    "<span class=" + "adress_timer>Vélo reservé à " + stationAdress + "</span>";
-                            });
 
                             // Push the data in the Session Storage
 
