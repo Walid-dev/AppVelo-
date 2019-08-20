@@ -56,16 +56,16 @@ class CheckInputValues {
         this.yellowArrow = document.getElementById("arrowYellow");
         this.canvasSignatureText = document.querySelector(".canvasSignatureWarning");
 
-        let isCanvasOff = true;
+        this.isCanvasOff = true;
         // Check the name and surname length and store the data and display the canvas signature field or display the error
         this.checkIfString = function() {
             this.btn.addEventListener("click", () =>
-                this.name.value.length > 1 && this.surname.value.length > 1 && isCanvasOff
+                this.name.value.length > 1 && this.surname.value.length > 1 && this.isCanvasOff
                     ? newCanvas.draw() &
                       saveData1.saveUserData() &
                       $(this.yellowArrow).fadeIn(300) &
                       (this.canvasSignatureText.innerHTML = "Maintenir clic droit sur le champs puis signer.") &
-                      (isCanvasOff = false) &
+                      (this.isCanvasOff = false) &
                       (this.nameLengthWarning.innerHTML = "Veuillez signez dans la partie ci-dessous.") &
                       (this.userNameField.innerHTML =
                           "<span>Nom : " + this.name.value + "<br> " + "Prenom : " + this.surname.value + "</span>")

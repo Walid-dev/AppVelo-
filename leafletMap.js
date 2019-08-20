@@ -7,14 +7,6 @@ class CreateMap {
         this.promise = jcdPromise;
         this.text = document.querySelector(".text2");
 
-        this.testOut = function() {
-            this.promise.then(function(data) {
-                for (const stations of data) {
-                    //  console.log(stations);
-                }
-            });
-        };
-
         // Get  the jcDecaux Api promise and use the data
         this.promise.then(
             function(data) {
@@ -41,6 +33,7 @@ class CreateMap {
                 let cluster = L.markerClusterGroup();
 
                 // The for loop to display stations and information from the data
+
                 for (const stations of data) {
                     // Declares variables of the stations information
                     let stationLatitude = stations.position.lat;
@@ -56,6 +49,7 @@ class CreateMap {
                     stationStatus = "OPEN" ? "Station Ouverte" : "Station fermée ou en travaux";
 
                     // Set the markers and their popups
+
                     let markers = L.marker([stationLatitude, stationLongitude]).addTo(cluster);
                     mymap.addLayer(cluster);
                     markers.bindPopup(
@@ -107,6 +101,23 @@ class CreateMap {
                         $(".btn--booking").click(function() {
                             $(".booking_fields").fadeTo(400, 1);
                             $("#information_fields").css("display", "none");
+
+                            $("#resaBtn").click(function(e) {
+                                e.preventDefault();
+                                document.getElementById("mapBox").innerHTML =
+                                    "<ul class=" +
+                                    "mapBox_infos" +
+                                    "><h3>Réservation</h3><hr><li>" +
+                                    "Un vélo est réservé par " +
+                                    submittedValues.name.value +
+                                    " " +
+                                    submittedValues.surname.value +
+                                    "</li><li>A l'adresse suivante : " +
+                                    stationAdress +
+                                    "</li></ul>";
+                                document.querySelector(".address_field_timer").innerHTML =
+                                    "<span class=" + "adress_timer>Vélo reservé à " + stationAdress + "</span>";
+                            });
 
                             // Push the data in the Session Storage
 

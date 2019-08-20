@@ -66,6 +66,8 @@
                     <p class="mt-1">Réserver votre vélo en 3 cliques.</p>
                     <div><a href="#mapid" class="btn btn--shallow slide mt-3">Reserver</a></div>
                 </div>
+                <div></div>
+
                 <i id="prevBtn" class="fas fa-arrow-left"></i>
                 <div id="pauseBtnContainer">
                     <i id="pauseBtn" class="">Pause</i>
@@ -88,7 +90,9 @@
             <hr class="mb-4" />
             <div class="row search-container">
                 <div class="map-container col-sm-7 mt-3 mb-3 pt-2 pb-2">
-                    <div id="mapid"></div>
+                    <div id="mapBox">
+                        <div id="mapid"></div>
+                    </div>
                 </div>
                 <div class="booking-container col-sm-5">
                     <div class="booking-wrapper mt-3 mb-3 pt-2 pb-2">
@@ -151,6 +155,10 @@
                                             Choisissez une station<br />
                                             sur la carte.
                                         </p>
+                                        <div class="resa_already_done">
+                                            <p>Une réservation est deja en cours.<br />Voulez vous l'annuler ?</p>
+                                            <p><button class="btn--booking" id="cancelResa">Annuler</button></p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -158,8 +166,6 @@
                     </div>
                 </div>
             </div>
-
-            <button class="btn btn-danger col-md-12" id="test">testBtn</button>
 
             <div class="container">
                 <div id="canvasDiv">

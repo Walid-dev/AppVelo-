@@ -15,8 +15,10 @@ class Timer {
             const secondsLeft = Math.round((then - Date.now()) / 1000);
             // Check if we should stop it -> Session Expired
             if (secondsLeft < 0) {
-                clearInterval(countdown);
+                clearInterval(this.countdown);
+                alert("Réservation expirée.");
                 sessionStorage.clear();
+                location.reload();
             }
 
             // Display it
@@ -25,7 +27,7 @@ class Timer {
             sessionStorage.setItem("second_left", secondsLeft);
         }, 1000);
 
-        $("#test").click(function(e) {
+        $("#cancelResa").click(function(e) {
             e.preventDefault();
             clearInterval(this.countdown);
             sessionStorage.clear();

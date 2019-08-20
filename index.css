@@ -78,7 +78,7 @@ hr {
     color: #eeb83b !important;
 }
 
-/** Carousel **/
+/** Slider **/
 
 .carousel-container {
     width: 100%;
@@ -110,9 +110,6 @@ hr {
     -moz-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     -o-transform: translate(-50%, -50%);
-}
-
-.carousel-text-container p {
 }
 
 #prevBtn {
@@ -196,9 +193,7 @@ hr {
     -o-transition: 0.5s ease;
 }
 
-/** Footer **/
-
-/** Booking Sectionc**/
+/** Booking Section**/
 
 .search-container {
     display: flex;
@@ -210,8 +205,6 @@ hr {
     border-radius: 20px;
     border: 1px solid #eeb83b17;
 }
-
-/** Canvas **/
 
 /** Map **/
 
@@ -231,7 +224,30 @@ hr {
     justify-content: center;
     align-items: center;
     min-height: 40vh;
+    text-align: center;
     color: #eeb83b;
+}
+
+.mapBox_infos {
+    width: 80%;
+    list-style-type: none;
+    font-family: "Roboto Mono", sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    color: #eeb83b;
+    border-radius: 10px;
+    border: 1px solid #eeb83b17;
+    padding: 20px 14px;
+    text-align: center;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.mapBox_infos li {
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 #mapid,
@@ -281,6 +297,15 @@ hr {
     text-align: center;
 }
 
+.resa_already_done p {
+    font-family: "Roboto Mono", sans-serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.1rem;
+    color: #eeb83b;
+    padding: 10px 14px;
+    text-align: center;
+}
+
 #information_fields {
     width: 80%;
     min-height: 50vh;
@@ -293,8 +318,7 @@ hr {
     margin: 0;
 }
 
-#information_fields li,
-#mapBox li {
+#information_fields li {
     font-size: 0.95rem;
     letter-spacing: 1px;
     margin-bottom: 8px;
@@ -359,6 +383,8 @@ hr {
     cursor: pointer;
 }
 
+/** Canvas **/
+
 #canvas {
     background: #e8e0d8;
     border: 2px solid #eeb83b;
@@ -371,7 +397,7 @@ hr {
 }
 
 #canvasDiv {
-    min-height: 460px;
+    margin: 60px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -430,7 +456,7 @@ hr {
     color: white;
 }
 
-/** Popup Style **/
+/** Popups Style **/
 
 .leaflet-popup-content p {
     margin: 5px 0px !important;

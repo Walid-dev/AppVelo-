@@ -87,11 +87,14 @@ class CreateCanvas {
                     e.preventDefault();
                     $(".main__input-container-child").hide(400);
                     $("#canvas").hide(400);
-                    document.querySelector(".canvasSignatureWarning").innerHTML = "Votre réservation à été effectuée";
+                    this.innerHTML = "Annuler";
+                    document.querySelector(".canvasSignatureWarning").innerHTML = "Votre réservation à été effectuée.";
                     const timer20min = new Timer(1200);
-                    $("#test").click(function(e) {
+                    $("#cancelResa").click(function(e) {
                         e.preventDefault();
                         clearInterval(timer20min.countdown);
+                        document.querySelector(".display-timer").innerHTML = "Reservation annulée";
+                        document.querySelector(".display-end_time").innerHTML = "";
                     });
                     isTimerOn = true;
                 } else if (!isTimerOn && isSigned <= 1600) {
@@ -99,9 +102,13 @@ class CreateCanvas {
                         "Veuillez signez ci-dessous s'il vous plait.";
                 } else {
                     document.querySelector(".canvasSignatureWarning").innerHTML =
-                        "Une reservation à deja été effectuée.<br>Celle-ci sera annulée.<br>Voulez vous effectuer une nouvelle réservation ?";
-                    button.innerHTML = "<a id=" + "resaBtn " + "class=" + "btn--shallow" + ">Nouvelle réservation</a>";
+                        "Une reservation est en cours.<br>Celle-ci sera annulée.<br>Voulez vous annuler ou effectuer une nouvelle réservation ?";
+                    button.innerHTML =
+                        "<a id=" + "resaBtn " + "class=" + "btn--shallow" + ">Annuler / Nouvelle réservation</a>";
                     $("#resaBtn").click(function(e) {
+                        document.querySelector(".display-timer").innerHTML = "Reservation annulée";
+                        document.querySelector(".display-end_time").innerHTML = "";
+                        console.log("resaBtn clicked");
                         sessionStorage.clear();
                         location.reload();
                     });
