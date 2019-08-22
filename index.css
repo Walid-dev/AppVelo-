@@ -437,6 +437,16 @@ hr {
     outline: none;
 }
 
+#resaBtn:hover {
+    border: 2px solid #fccb58;
+    box-shadow: 0 0 2px rgba(235, 189, 82, 0.705), 0 0 5px rgba(255, 219, 135, 0.986), 0 0 10px rgb(255, 231, 176);
+    transition: 0.35s ease;
+    -webkit-transition: 0.35s ease;
+    -moz-transition: 0.35s ease;
+    -ms-transition: 0.35s ease;
+    -o-transition: 0.35s ease;
+}
+
 /** Timer **/
 
 .timer-container {

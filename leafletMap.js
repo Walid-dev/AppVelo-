@@ -10,7 +10,6 @@ class CreateMap {
         // Get  the jcDecaux Api promise and use the data
         this.promise.then(
             function(data) {
-                //  console.log("leafletmap data", data);
                 // Pushes the data in an array
                 let dataArray = [data];
                 dataArray.push(data);
@@ -20,7 +19,8 @@ class CreateMap {
 
                 // Map Code using the variables settled above
                 const mymap = L.map(`${this.mapId}`).setView([latitude, longitude], this.zoom);
-                //  console.log(longitude, latitude);
+
+                // Display Map Code
                 L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
                     attribution:
                         'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -49,7 +49,6 @@ class CreateMap {
                     stationStatus = "OPEN" ? "Station Ouverte" : "Station fermée ou en travaux";
 
                     // Set the markers and their popups
-
                     let markers = L.marker([stationLatitude, stationLongitude]).addTo(cluster);
                     mymap.addLayer(cluster);
                     markers.bindPopup(
@@ -67,13 +66,9 @@ class CreateMap {
                             "bike_stands" +
                             ">Disponibles:" +
                             availableBikes +
-                            "</p>" +
-                            "<p>" +
-                            lastUpdate +
                             "</p>"
                     ),
                         // Hide the input booking fields
-
                         $(".main__input-container-child").hide();
                     $(".booking_fields").hide();
 
@@ -94,14 +89,13 @@ class CreateMap {
                             "btn--booking" +
                             ">Valider</a></div>";
 
-                        // Add the adress on timer fields
-
                         // Hide explaining fields and Display the information fields
                         $(".main__input-container-child").show();
                         $(".btn--booking").click(function() {
                             $(".booking_fields").fadeTo(400, 1);
                             $("#information_fields").css("display", "none");
 
+                            // Display the reservation information in a text box which replaces the map box when the reservation is confirmed
                             $("#resaBtn").click(function(e) {
                                 e.preventDefault();
                                 document.getElementById("mapBox").innerHTML =
@@ -116,10 +110,10 @@ class CreateMap {
                                     stationAdress +
                                     "</li></ul>";
                                 document.querySelector(".address_field_timer").innerHTML =
-                                    "<span class=" + "adress_timer>Vélo reservé à " + stationAdress + "</span>";
+                                    "<span class=" + "adress_timer> Réservation au :  " + stationAdress + "</span>";
                             });
 
-                            // Push the data in the Session Storage
+                            // Push the data reservation in the Session Storage
 
                             sessionStorage.setItem("adresse", JSON.stringify(stationAdress));
                             sessionStorage.setItem("station_name", JSON.stringify(stationName));

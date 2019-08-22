@@ -11,31 +11,30 @@ class Timer {
         displayTimeLeft(seconds);
         displayEndTime(then);
 
+        // Set the countdown
         this.countdown = setInterval(() => {
             const secondsLeft = Math.round((then - Date.now()) / 1000);
-            // Check if we should stop it -> Session Expired
+            // Check if we should stop the timer -> Session Expired
             if (secondsLeft < 0) {
                 clearInterval(this.countdown);
                 alert("Réservation expirée.");
                 sessionStorage.clear();
                 location.reload();
             }
-
             // Display it
             displayTimeLeft(secondsLeft);
-            console.log(secondsLeft);
+            // Set the countdown seconds left on the sessionStorage
             sessionStorage.setItem("second_left", secondsLeft);
         }, 1000);
 
+        // Cancel the countdown if the reservation is cancelled
         $("#cancelResa").click(function(e) {
             e.preventDefault();
             clearInterval(this.countdown);
             sessionStorage.clear();
-            console.log("clicked on timer.js");
         });
 
-        // Display time left before expiration
-
+        // Display time left before reservation expiration
         function displayTimeLeft(seconds) {
             const minutes = Math.floor(seconds / 60);
             const remainderSeconds = seconds % 60;
@@ -53,5 +52,3 @@ class Timer {
         }
     }
 }
-
-// const newTimer = new Timer(1200);

@@ -13,14 +13,16 @@ class CreateCanvas {
             if (typeof G_vmlCanvasManager != "undefined") {
                 canvas = G_vmlCanvasManager.initElement(canvas);
             }
+
+            // Set the canvas
             var context = canvas.getContext("2d");
             context.font = "18px Arial";
             context.fillText("Signature :", 15, 40);
 
+            // Set the canvas painting
             $("#canvas").mousedown(function(e) {
                 var mouseX = e.pageX - this.offsetLeft;
                 var mouseY = e.pageY - this.offsetTop;
-
                 paint = true;
                 addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop);
                 redraw();
@@ -55,7 +57,6 @@ class CreateCanvas {
 
             function redraw() {
                 context.clearRect(0, 0, context.canvas.width, context.canvas.height); // Clears the canvas
-
                 context.strokeStyle = "#ce902a";
                 context.lineJoin = "round";
                 context.lineWidth = 3;
@@ -71,8 +72,7 @@ class CreateCanvas {
                     context.closePath();
                     context.stroke();
                 }
-                //  console.log(isSigned);
-
+                // Check the minimum length signature required
                 if (isSigned >= 1600) {
                     document.querySelector(".canvasSignatureWarning").innerHTML =
                         "Signature accéptée.<br>Vous pouvez maintenant valider.";
@@ -80,10 +80,16 @@ class CreateCanvas {
                     return;
                 }
             }
+
+            // Add a reservation button below the canvas
             button.innerHTML = "<a id=" + "resaBtn " + "class=" + "btn--shallow" + ">Réserver</a>";
-            let isTimerOn = false;
+            let isCanvas = false;
+
+            // Check if there's no other timer displayed and the minimum length required signature
+            // -> Validate or not the booking
+
             $("#resaBtn").click(function(e) {
-                if (!isTimerOn && isSigned >= 1600) {
+                if (!isCanvas && isSigned >= 1200) {
                     e.preventDefault();
                     $(".main__input-container-child").hide(400);
                     $("#canvas").hide(400);
@@ -93,16 +99,16 @@ class CreateCanvas {
                     $("#cancelResa").click(function(e) {
                         e.preventDefault();
                         clearInterval(timer20min.countdown);
-                        document.querySelector(".display-timer").innerHTML = "Reservation annulée";
+                        document.querySelector(".display-timer").innerHTML = "Réservation annulée";
                         document.querySelector(".display-end_time").innerHTML = "";
                     });
-                    isTimerOn = true;
-                } else if (!isTimerOn && isSigned <= 1600) {
+                    isCanvas = true;
+                } else if (!isCanvas && isSigned <= 1200) {
                     document.querySelector(".canvasSignatureWarning").innerHTML =
-                        "Veuillez signez ci-dessous s'il vous plait.";
+                        "Veuillez signer ci-dessous s'il vous plait.";
                 } else {
                     document.querySelector(".canvasSignatureWarning").innerHTML =
-                        "Une reservation est en cours.<br>Celle-ci sera annulée.<br>Voulez vous annuler ou effectuer une nouvelle réservation ?";
+                        "Une reservation est en cours.<br>Celle-ci sera annulée.<br>Voulez-vous annuler ou effectuer une nouvelle réservation ?";
                     button.innerHTML =
                         "<a id=" + "resaBtn " + "class=" + "btn--shallow" + ">Annuler / Nouvelle réservation</a>";
                     $("#resaBtn").click(function(e) {
