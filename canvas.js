@@ -1,6 +1,6 @@
 class CreateCanvas {
     constructor(canvasDiv, canvasWidth, canvasHeight) {
-        this.draw = function() {
+        this.drawing = function() {
             this.canvasDiv = document.getElementById(canvasDiv);
             var canvas = document.createElement("canvas");
             var button = document.createElement("span");
@@ -84,44 +84,5 @@ class CreateCanvas {
             }
 
             // Add a reservation button below the canvas
-            button.innerHTML = "<a id=" + "resaBtn " + "class=" + "btn--shallow" + ">Réserver</a>";
-            let isCanvas = false;
-
-            // Check if there's no other timer displayed and the minimum length required signature
-            // -> Validate or not the booking
-
-            $("#resaBtn").click(function(e) {
-                if (!isCanvas && isSigned >= 1200) {
-                    e.preventDefault();
-                    $(".main__input-container-child").hide(400);
-                    $("#canvas").hide(400);
-                    this.innerHTML = "Annuler";
-                    document.querySelector(".canvasSignatureWarning").innerHTML = "Votre réservation à été effectuée.";
-                    const timer20min = new Timer(1200);
-                    $("#cancelResa").click(function(e) {
-                        e.preventDefault();
-                        clearInterval(timer20min.countdown);
-                        document.querySelector(".display-timer").innerHTML = "Réservation annulée";
-                        document.querySelector(".display-end_time").innerHTML = "";
-                    });
-                    isCanvas = true;
-                } else if (!isCanvas && isSigned <= 1200) {
-                    document.querySelector(".canvasSignatureWarning").innerHTML =
-                        "Veuillez signer ci-dessous s'il vous plait.";
-                } else {
-                    document.querySelector(".canvasSignatureWarning").innerHTML =
-                        "Une reservation est en cours.<br>Celle-ci sera annulée.<br>Voulez-vous annuler ou effectuer une nouvelle réservation ?";
-                    button.innerHTML =
-                        "<a id=" + "resaBtn " + "class=" + "btn--shallow" + ">Annuler / Nouvelle réservation</a>";
-                    $("#resaBtn").click(function(e) {
-                        document.querySelector(".display-timer").innerHTML = "Reservation annulée";
-                        document.querySelector(".display-end_time").innerHTML = "";
-                        console.log("resaBtn clicked");
-                        sessionStorage.clear();
-                        location.reload();
-                    });
-                }
-            });
-        };
-    }
+           
 }

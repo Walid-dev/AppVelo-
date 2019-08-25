@@ -63,4 +63,6 @@ submittedValues.setInputsValues();
 submittedValues.saveUserData();
 
 // Create Canvas with the canvas-box ID the height and width
-const newCanvas = new CreateCanvas("canvasDiv", "480px", "280px");
+// const newCanvas = new CreateCanvas("canvasDiv", "480px", "280px");
+
+const newCanvas = new CreateNewCanvas("sig-canvas", "480px", "160px");

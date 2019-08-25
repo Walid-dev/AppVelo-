@@ -48,7 +48,7 @@ class CheckInputValues {
         this.checkIfString = function() {
             this.btn.addEventListener("click", () =>
                 this.name.value.length > 1 && this.surname.value.length > 1 && this.isCanvasOff
-                    ? newCanvas.draw() &
+                    ? newCanvas.drawing() &
                       this.saveUserData() &
                       $(this.yellowArrow).fadeIn(400) &
                       (this.canvasSignatureText.innerHTML = "Maintenir clique souris sur le champs puis signer.") &

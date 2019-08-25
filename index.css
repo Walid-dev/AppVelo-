@@ -375,7 +375,7 @@ hr {
     background: transparent;
     color: white !important;
     border-radius: 3px;
-    border: solid 2px #eeb83b;
+    border: solid 1px #eeb83b;
     padding: 0.6rem 1.4rem;
     cursor: pointer;
 }
@@ -388,7 +388,7 @@ hr {
     background: transparent;
     color: white !important;
     border-radius: 3px;
-    border: solid 2px #eeb83b;
+    border: solid 1px #eeb83b;
     padding: 0.3rem 1rem;
     margin: 1.2rem 0rem;
     cursor: pointer;
@@ -498,18 +498,51 @@ hr {
     color: #eeb83b;
 }
 
-/** Media Queries **/
+/** Canvas 2 **/
 
-@media screen and (max-width: 780px) {
-    #canvas {
-        width: 400px;
-        height: 230px;
-    }
-}
-
-#sig-canvas {
+.canvasClass {
     border: 2px dotted #cccccc;
     border-radius: 15px;
     cursor: crosshair;
     background: #fff;
+}
+
+.canvas_box,
+.canvas_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.btn_clear_canvas {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    background: transparent;
+    color: white !important;
+    border-radius: 3px;
+    border: solid 1px #fff;
+    padding: 0.3rem 1rem;
+    margin: 1.2rem 0rem;
+    cursor: pointer;
+}
+
+.btn_clear_canvas:hover {
+    border: solid 1px #eeb83b;
+    transition: 0.5s ease-out;
+    -webkit-transition: 0.5s ease-out;
+    -moz-transition: 0.5s ease-out;
+    -ms-transition: 0.5s ease-out;
+    -o-transition: 0.5s ease-out;
+}
+
+/** Media Queries **/
+
+@media screen and (max-width: 780px) {
+    #sig-canvas {
+        width: 330px;
+        height: 190px;
+    }
 }
