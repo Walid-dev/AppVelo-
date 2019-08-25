@@ -14,7 +14,7 @@ class CheckInputValues {
 
         this.isCanvasOff = true;
 
-        // Set values to the user submitted values
+        // Set values to the inputs name and surname
         this.setInputsValues = function() {
             if (nameValue && lastNameValue) {
                 document.getElementById("inputName").setAttribute("value", JSON.parse(nameValue));
@@ -51,7 +51,7 @@ class CheckInputValues {
                     ? newCanvas.draw() &
                       this.saveUserData() &
                       $(this.yellowArrow).fadeIn(400) &
-                      (this.canvasSignatureText.innerHTML = "Maintenir clic droit sur le champs puis signer.") &
+                      (this.canvasSignatureText.innerHTML = "Maintenir clique souris sur le champs puis signer.") &
                       (this.isCanvasOff = false) &
                       (this.nameLengthWarning.innerHTML = "Veuillez signer dans la partie ci-dessous.") &
                       (this.userNameField.innerHTML =

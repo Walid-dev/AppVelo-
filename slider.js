@@ -27,7 +27,7 @@ class Slider {
             } else {
                 playPause = setInterval(function autoPlay() {
                     nextBtn.click();
-                }, 5000);
+                }, 6000);
                 play = true;
                 document.getElementById("pauseBtn").innerHTML = "Pause";
                 playAndPauseText = "Play";
@@ -41,10 +41,8 @@ class Slider {
         // Hide and display the slider text container
         function displaySliderText() {
             if (counter == 2) {
-                console.log("fadeIn");
                 $(".carousel-text-container").fadeOut(800);
             } else {
-                console.log("fadeOut");
                 $(".carousel-text-container").fadeIn(800);
             }
         }
@@ -59,7 +57,7 @@ class Slider {
             clearInterval(playPause);
             playPause = setInterval(function autoPlay() {
                 nextBtn.click();
-            }, 5000);
+            }, 6000);
             counter++;
             carouselSlide.style.transform = "translateX(" + -100 * counter + "%)";
             displaySliderText();
@@ -72,7 +70,7 @@ class Slider {
             clearInterval(playPause);
             playPause = setInterval(function autoPlay() {
                 nextBtn.click();
-            }, 5000);
+            }, 6000);
             counter--;
             carouselSlide.style.transform = "translateX(" + -100 * counter + "%)";
             displaySliderText();

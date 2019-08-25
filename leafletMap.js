@@ -1,11 +1,9 @@
 class CreateMap {
     constructor(mapId, zoom, accessToken) {
-        this.jcdData = cityJcdData.data;
         this.mapId = mapId;
         this.zoom = zoom;
         this.accessToken = accessToken;
         this.promise = jcdPromise;
-        this.text = document.querySelector(".text2");
 
         // Get  the jcDecaux Api promise and use the data
         this.promise.then(
@@ -56,7 +54,10 @@ class CreateMap {
                             "stations_status>" +
                             stationStatus +
                             "</p><p class=" +
-                            "stations_name>Station: " +
+                            "stations_name>Station : " +
+                            stationName +
+                            "</p><p class=" +
+                            "stations_adress>Adresse: " +
                             stationAdress +
                             "</p><p class=" +
                             "bike_stands" +
@@ -77,6 +78,9 @@ class CreateMap {
                         $(".main__input-container-child2").hide();
                         document.getElementById("information_fields").innerHTML =
                             "<li class=" +
+                            "station_field >Station : " +
+                            stationName +
+                            "</li><li class=" +
                             "adress_field >Adresse : " +
                             stationAdress +
                             "</li><li class=" +
@@ -110,7 +114,12 @@ class CreateMap {
                                     stationAdress +
                                     "</li></ul>";
                                 document.querySelector(".address_field_timer").innerHTML =
-                                    "<span class=" + "adress_timer> Réservation au :  " + stationAdress + "</span>";
+                                    "<span class=" +
+                                    "adress_timer> Réservation à la station :  " +
+                                    stationName +
+                                    "</span><br><span>Adresse :  " +
+                                    stationAdress +
+                                    "</span>";
                             });
 
                             // Push the data reservation in the Session Storage

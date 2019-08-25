@@ -34,7 +34,7 @@
         <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
         <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
         <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
-        <title>AppVélo</title>
+        <title>VéloApp</title>
         <link rel="icon" href="https://media.giphy.com/media/2dcW4Hs1Py3Ejw2iKy/giphy.gif" type="image/png" />
     </head>
     <body>
@@ -48,13 +48,13 @@
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav">
                     <li class="nav-item mr-3 ml-3">
-                        <a class="nav-link" href="#">Acceuil</a>
+                        <a href="#parallax" class="nav-link" href="#">Acceuil</a>
                     </li>
                     <li class="nav-item mr-3 ml-3">
-                        <a class="nav-link" href="#">Réservation</a>
+                        <a href="#mapSection" class="nav-link" href="#">Réservation</a>
                     </li>
                     <li class="nav-item mr-3 ml-3">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a href="#sticky-footer" class="nav-link" href="#">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -86,7 +86,7 @@
             </div>
         </div>
 
-        <div class="map-container container-fluid">
+        <div id="mapSection" class="map-container container-fluid">
             <h2 id="mainSectionTitle">Choisissez une station</h2>
             <hr class="mb-4" />
             <div class="row search-container">

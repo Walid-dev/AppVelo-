@@ -28,6 +28,8 @@ class CreateCanvas {
                 redraw();
             });
 
+            document.querySelector("#canvas").addEventListener("touchstart", redraw());
+
             $("#canvas").mousemove(function(e) {
                 if (paint) {
                     addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
@@ -73,7 +75,7 @@ class CreateCanvas {
                     context.stroke();
                 }
                 // Check the minimum length signature required
-                if (isSigned >= 1600) {
+                if (isSigned >= 1200) {
                     document.querySelector(".canvasSignatureWarning").innerHTML =
                         "Signature accéptée.<br>Vous pouvez maintenant valider.";
                 } else {

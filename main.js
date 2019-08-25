@@ -54,7 +54,6 @@ const displayNewMap = new CreateMap(
 setInterval(() => {
     cityJcdData.displayData();
     displayNewMap;
-    console.log("data refreshed");
 }, 60000);
 
 // Check the user submitted values and store them in localStorage
